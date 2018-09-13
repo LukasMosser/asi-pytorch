@@ -27,13 +27,16 @@ def get_args():
     parser.add_argument('--seed', type=int, default=42,
                         help='Random seed. default: 42 (derived from Douglas Adams)')
     parser.add_argument('--epochs', '-E', type=int, default=10,
-                        help='Max iteration number of training. default: 100000')
+                        help='Max epoch number of training. default: 10')
     parser.add_argument('--cube_size', '-cs', type=int, default=32,
                         help='Size of input cube. default: 32')
     parser.add_argument('--train_size', '-ts', type=float, default=0.8,
                         help='Size of training split in range 0 to 1. default: 0.8')
     parser.add_argument('--use_stratified_kfold', '-strat', default=False, action='store_true',
                         help='If true use stratified kfold, else use left right split of training image. default: True')
+    parser.add_argument('--num_examples', '-ne', type=int, default=10000,
+                        help='Number of examples in an epoch. default: 10000')
+
     # Log and Save interval configuration
     parser.add_argument('--results_root', type=str, default='results',
                         help='Path to results directory. default: results')

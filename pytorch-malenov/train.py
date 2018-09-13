@@ -49,7 +49,6 @@ def main():
         
     cube_half_size = args.cube_size
 
-    
     if args.use_stratified_kfold:
         valid_indices, valid_labels = get_valid_indices_and_labels(index_mins, index_maxs, indices, labels, cube_half_size)
 
@@ -80,13 +79,14 @@ def main():
     model = MalenovNet()
     model.to(device)
     criterion = nn.CrossEntropyLoss()
-    optimizer = torch.optim.Adam(model.parameters(), lr=1e-2, betas=(0.5, 0.9))
+    optimizer = torch.optim.Adam(model.parameters(), lr=args.lr, betas=(0.5, 0.9))
 
     for epoch in range(args.epochs):
         model.train()
         avg_acc = 0.
         avg_loss = 0.
-        for i, (X, y) in enumerate(tqdm(train_loader)):
+        examples = 0
+        for i, (X, y) in enumerate(tqdm(train_loader, total=np.ceil(args.num_examples/args.batch_size))):
             optimizer.zero_grad()
             y_pred = model(X.to(device))
             loss = criterion(y_pred, y.to(device))
@@ -95,13 +95,17 @@ def main():
             optimizer.step()
             pred = torch.argmax(F.softmax(y_pred.detach(), 1), 1)
             avg_acc += accuracy_score(y_true=y.cpu().numpy(), y_pred=pred.cpu().numpy())*X.size(0)
+            examples += X.size(0)
+
+            if examples >= args.num_examples:
+                break
 
         if epoch % args.log_interval == args.log_interval-1:
-            print("Train: Average Loss: ", avg_loss/len(train_dset))
-            print("Train: Average Accuracy: ", avg_acc/len(train_dset))
+            print("Train: Average Loss: ", avg_loss/examples)
+            print("Train: Average Accuracy: ", avg_acc/examples)
 
-            train_writer.add_scalar('loss', avg_loss/len(train_dset), epoch)
-            train_writer.add_scalar('accuracy', avg_acc/len(train_dset), epoch)
+            train_writer.add_scalar('loss', avg_loss/examples, epoch)
+            train_writer.add_scalar('accuracy', avg_acc/examples, epoch)
 
         model.eval()
         avg_acc = 0.
