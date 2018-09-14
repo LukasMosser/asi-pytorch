@@ -1,0 +1,20 @@
+{
+  "data_root": "../data/malenov/",
+  "batch_size": 32,
+  "num_workers": 2,
+  "lr": 0.001,
+  "beta1": 0.9,
+  "beta2": 0.999,
+  "seed": 42,
+  "epochs": 10,
+  "cube_size": 32,
+  "train_size": 0.8,
+  "use_stratified_kfold": true,
+  "num_examples": 10000,
+  "results_root": "results",
+  "checkpoint_interval": 1,
+  "log_interval": 1,
+  "args_path": null,
+  "checkpoint_path": null,
+  "inline": 230
+}
