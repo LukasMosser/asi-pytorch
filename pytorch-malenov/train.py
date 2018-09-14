@@ -1,18 +1,18 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.cross_validation import StratifiedShuffleSplit
-from tqdm import tqdm as tqdm
 from sklearn.metrics import accuracy_score
+from tqdm import tqdm as tqdm
 
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from torch.utils.data import DataLoader
 
-from dataset import MalenovDataset
-from options import prepare_output_directory, get_args
-from model import MalenovNet
-from utils import save_checkpoints
+from malenov.dataset import MalenovDataset
+from malenov.options import prepare_output_directory, get_args
+from malenov.model import MalenovNet
+from malenov.utils import save_checkpoints
 
 def get_valid_indices_and_labels(index_mins, index_maxs, indices, labels, cube_half_size):
     valid_indices = []

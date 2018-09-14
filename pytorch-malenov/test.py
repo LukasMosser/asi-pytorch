@@ -1,18 +1,17 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.cross_validation import StratifiedShuffleSplit
-from tqdm import tqdm as tqdm
 from sklearn.metrics import accuracy_score
+from tqdm import tqdm as tqdm
 
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from torch.utils.data import DataLoader
 
-from dataset import MalenovTestDataset
-from options import prepare_output_directory, get_args
-from model import MalenovNet
-from utils import save_checkpoints
+from malenov.dataset import MalenovTestDataset
+from malenov.options import get_args
+from malenov.model import MalenovNet
 
 
 def main():
