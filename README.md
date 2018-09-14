@@ -9,3 +9,7 @@ All credit for original work to the authors of respective publications and imple
 
 Currently implemented models:
 * MalenoV - Ported from the original implementation in Keras by @bolgebrygg [GitHub](https://github.com/bolgebrygg/MalenoV)
+
+If you find this repository useful feel free to cite the repository, the original author's works or drop me a tweet (@porestar)[https://twitter.com/porestar].
+
+Please respect the licenses of the datasets, the original authors work and of this repository. Thank you
