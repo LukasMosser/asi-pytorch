@@ -1,5 +1,4 @@
 data/malenov/seismic_cube.npy
-pytorch-malenov/results/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
