@@ -23,7 +23,7 @@ Please see the accompanying jupyter notebooks for more detail.
 
 To run with a spatial split of the original labels:  
 ```
-python train.py --use_stratified_kfold --lr 0.001 --batch_size  32 --num_examples 10000 --beta1 0.9 --beta2 0.999
+python train.py --lr 0.001 --batch_size  32 --num_examples 10000 --beta1 0.9 --beta2 0.999
 ```
 
 
