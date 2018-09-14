@@ -46,8 +46,11 @@ def get_args():
                         help='Interval of showing losses. default: 100')
     # Resume training
     parser.add_argument('--args_path', default=None, help='Checkpoint args json path. default: None')
-    parser.add_argument('--model_ckpt_path', '-mcp', default=None,
-                        help='Generator and optimizer checkpoint path. default: None')
+    parser.add_argument('--checkpoint_path', '-mcp', default=None,
+                        help='Model and optimizer checkpoint path. default: None')
+    
+    #Test Time
+    parser.add_argument('--inline', default=230, type=int, help='Set inline for prediction')
     args = parser.parse_args()
 
     args.results_root = os.path.expandvars(args.results_root)
