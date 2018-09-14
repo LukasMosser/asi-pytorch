@@ -1,4 +1,4 @@
-# Automatic-Seismic-Interpretation Pytorch
+# Automatic-Seismic-Interpretation in Pytorch
 ## Pytorch implementations of "Automatic Seismic Interpretation" approaches and publications
 
 This repository is a collection of implementations of automatic seismic interpretation models and publications in Pytorch.  
