@@ -79,7 +79,7 @@ def main():
     model = MalenovNet()
     model.to(device)
     criterion = nn.CrossEntropyLoss()
-    optimizer = torch.optim.Adam(model.parameters(), lr=args.lr, betas=(0.5, 0.9))
+    optimizer = torch.optim.Adam(model.parameters(), lr=args.lr, betas=(args.beta1, args.beta2))
 
     for epoch in range(args.epochs):
         model.train()
